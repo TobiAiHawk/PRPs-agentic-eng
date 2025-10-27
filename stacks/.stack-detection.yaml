@@ -1,0 +1,119 @@
+# Stack Detection Configuration
+# Automatically detects technology stack for features
+
+rules:
+  - pattern: "**/*.py"
+    stack: "python"
+    config: "stacks/python"
+    tools:
+      - pytest
+      - black
+      - mypy
+      - ruff
+  
+  - pattern: "**/*.java"
+    stack: "java"
+    config: "stacks/java"
+    tools:
+      - junit
+      - maven
+      - gradle
+  
+  - pattern: "**/*.ts"
+    stack: "typescript"
+    config: "stacks/javascript"
+    tools:
+      - jest
+      - eslint
+      - prettier
+      - tsc
+  
+  - pattern: "**/*.js"
+    stack: "javascript"
+    config: "stacks/javascript"
+    tools:
+      - jest
+      - eslint
+      - prettier
+  
+  - pattern: "**/*.go"
+    stack: "golang"
+    config: "stacks/golang"
+    tools:
+      - go test
+      - golangci-lint
+  
+  - pattern: "**/*.rs"
+    stack: "rust"
+    config: "stacks/rust"
+    tools:
+      - cargo test
+      - cargo clippy
+      - rustfmt
+  
+  - pattern: "**/*.cs"
+    stack: "csharp"
+    config: "stacks/dotnet"
+    tools:
+      - dotnet test
+      - dotnet format
+
+# Feature-specific overrides (will be populated as features are added)
+features:
+  # Example configurations
+  example_payment:
+    primary_stack: "python"
+    secondary: ["typescript"]
+    description: "Payment processing feature with Python backend and TypeScript frontend"
+  
+  example_auth:
+    primary_stack: "java"
+    secondary: ["typescript"]
+    description: "Authentication service with Java Spring Boot and TypeScript React"
+  
+  example_data_pipeline:
+    primary_stack: "python"
+    secondary: ["sql"]
+    description: "Data pipeline with Python and SQL transformations"
+
+# Stack-specific settings
+stacks:
+  python:
+    version: "3.11"
+    package_manager: "pip"
+    test_framework: "pytest"
+    linter: "ruff"
+    formatter: "black"
+  
+  java:
+    version: "17"
+    build_tool: "gradle"
+    test_framework: "junit5"
+    linter: "spotbugs"
+  
+  javascript:
+    runtime: "node"
+    version: "20"
+    package_manager: "npm"
+    test_framework: "jest"
+    bundler: "webpack"
+  
+  typescript:
+    extends: "javascript"
+    compiler: "tsc"
+    strict: true
+  
+  golang:
+    version: "1.21"
+    module_system: true
+    test_framework: "testing"
+  
+  rust:
+    version: "stable"
+    package_manager: "cargo"
+    test_framework: "cargo test"
+  
+  dotnet:
+    version: "8.0"
+    package_manager: "nuget"
+    test_framework: "xunit"

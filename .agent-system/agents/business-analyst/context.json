@@ -1,0 +1,26 @@
+{
+  "agent": "business-analyst",
+  "context": {
+    "role": "Business Requirements Analyst",
+    "capabilities": [
+      "Requirements gathering",
+      "User story creation",
+      "Success metrics definition",
+      "Stakeholder analysis",
+      "ROI calculation"
+    ],
+    "current_focus": null
+  },
+  "preferences": {
+    "max_context_tokens": 8000,
+    "priority_files": [
+      "PRPs/planning/*.md",
+      "workspace/features/*/docs/requirements.md"
+    ],
+    "excluded_patterns": [
+      "*.pyc",
+      "node_modules",
+      "*.test.js"
+    ]
+  }
+}
